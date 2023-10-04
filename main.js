@@ -1,155 +1,52 @@
-// define computer and player 
+function getComputerChoice(){
+    let choices = ["rock", "paper", "scissors"];
+    return choices[Math.floor(Math.random() * 3)];
+}
 
-let playerSelection ="";
-let computerSelection ="";
+function humanPlayer(){
+    let hand = prompt("Enter rock, paper, or scissors");
+    return hand ? hand.toLowerCase() : null;
+}
 
+function determineWinner(computerChoice, playerChoice) {
+    if (computerChoice === playerChoice) return "It's a tie";
 
-// create a function that accepts a string (rock, paper, or scissors)
-// if rock is chosen it should lose to paper and win versus
-// if scissors is chosen it should lose to rock and win versus paper
-// if paper is chosen it should lose to rock and win versus scissors
-//the function should accept players and computers input then 
-
-
-
-//rock paper scissors game
-//the game has three variables
-//each variable can only defeat 1 other
-//then loses to the other variables
-
-// first write a function that accepts a string from the user
-// the function accepts the string
-//the function turn the string to lowercase
-//the retrurns the string
-
-
-
-function humanPlayer (){
-    let hand = prompt("Enter rock, paper, or scissors")
-    if (hand === null){
-        return "cancel";
-     } else {
-         return hand;
-            }
-        }
-    
-    
-
-//second function is the computer choose rock paper or scissors
-//the 
-function getComputerChoice (min, max){
- let number = Math.floor(Math.random() * (max - min + 1)) + min;
-//rock =< 3 which is 3,2,1
-//paper =>4 && => 6 which is 4, 5, 6
-//scissors =>7
-    if (number >= 0 && number < 1){
-        return "paper"
+    if (
+        (computerChoice === "rock" && playerChoice === "scissors") ||
+        (computerChoice === "paper" && playerChoice === "rock") ||
+        (computerChoice === "scissors" && playerChoice === "paper")
+    ) {
+        return "Computer Wins";
     }
-    else if (number >= 1 && number < 2){
-        return "rock"
-    }
-    else {
-        return "scissors"
-    }
+
+    return "Player Wins";
 }
 
-//third have the computer play against itself
-//how?
-
-function computerRound (computerChoice, playerChoice){
-    computerChoice = getComputerChoice(0, 2)
-    playerChoice = getComputerChoice(0, 2)
-    console.log(computerChoice)
-    console.log(playerChoice)
-//let choiceArray = []
-//choiceArray.push(computerChoice, playerChoice)
-//console.log (choiceArray)
-let rock = "rock";
-let paper = "paper";
-let scissors = "scissors";
-if(computerChoice === rock && playerChoice === scissors){
-    return ("Computer Rock Wins")
+function computerRound(){
+    let computerChoice1 = getComputerChoice();
+    let computerChoice2 = getComputerChoice();
+    console.log("Computer 1:", computerChoice1);
+    console.log("Computer 2:", computerChoice2);
+    return determineWinner(computerChoice1, computerChoice2);
 }
 
-else if (computerChoice === paper && playerChoice === rock){
-    return "Computer Paper wins"
-}
+function playRound(){
 
-else if(playerChoice === paper && computerChoice === scissors){
-    return "Computer scissors wins"
-}
-else if(computerChoice === paper && playerChoice === scissors){
-    return "Player scissors wins"
-}
+    let rounds = 5;
+for(let i = 0; i < rounds; i++){
+    let computerSelection = getComputerChoice();
+    let humanSelection = humanPlayer();
+    if (!humanSelection) return "Game cancelled";
 
-else if (playerChoice === paper && computerChoice === rock){
-    return "Player Paper wins"
-}
-else if(playerChoice === rock && computerChoice === scissors){
-    return ("Player Rock Wins")
-}
-else{
-    return "It's a tie"
-}
-
-}
-// console.log (computerRound())
-// console.log (computerRound())
-// console.log (computerRound())
-// console.log (computerRound())
-// console.log (computerRound())
-// console.log (computerRound())
-// console.log (computerRound())
-// console.log (computerRound())
-//maybe copy the "getComputerChoice" function and have it to choose two numbers instead of one
-
-// console.log (getComputerChoice (1,9))
-// console.log (getComputerChoice (1,9))
-// console.log (getComputerChoice (1,9))
-// console.log (getComputerChoice (1,9))
-// console.log (getComputerChoice (1,9))
-// console.log (getComputerChoice (1,9))
-// console.log (getComputerChoice (1,9))
-// console.log (getComputerChoice (1,9))
-
-//play a round with the computer
-//take computerSelection into a function as an arguement as well as a prompt
-//copy the if else statement from computer round
-//return who wins computer or human
-
-function playRound (){
-    let computerSelection = getComputerChoice(0,5)
-    let humanSelection = humanPlayer()
-    let rock = "rock";
-    let paper = "paper";
-    let scissors = "scissors";
-let count = 0
-let i = 1
-while (i <= 5){
-    count += i;
-    i++
-    if(computerSelection === rock && humanSelection === scissors){
-        return ("Computer Rock Wins")
+    if (!["rock", "paper", "scissors"].includes(humanSelection)) {
+        return "Invalid choice";
     }
-    else if(computerSelection === paper && humanSelection === scissors){
-        return "Computer scissors wins"
-    }
-    else if (computerSelection === paper && humanSelection === rock){
-        return "Computer Paper wins"
-    }
-    else if(humanSelection === rock && computerSelection === scissors){
-        return ("Player Rock Wins")
-    }
-    else if(humanSelection === paper && computerSelection === scissors){
-        return "Player scissors wins"
-    }
-    else if (humanSelection === paper && computerSelection === rock){
-        return "Player Paper wins"
-    }
-    else{
-        return "It's a tie"
-    }
+
+    console.log("Computer chose:", computerSelection);
+    console.log("Player chose:", humanSelection);
+
+    return determineWinner(computerSelection, humanSelection);
 }
 }
-playRound()
-    
+// Example call
+console.log(playRound());

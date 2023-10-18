@@ -1,7 +1,12 @@
 .container{
     display: flex;
     flex-direction: row;
-    width: 400vh;
-    height: 400vh;
+    width: 150vh;
+    height: 150vh;
     align-items: center;
+}
+.rockImg, .paperImg, .scissorsImg{
+    width: 50vh;
+    width: auto;
+    cursor: pointer;
 }

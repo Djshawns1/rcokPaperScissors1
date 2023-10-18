@@ -28,38 +28,38 @@ function determineWinner(computerChoice, playerChoice) {
     return "Player Wins";
 }
 
-function playRound() {
-    let humanWin = 0;
-    let computerWin = 0;
+// function playRound() {
+//     let humanWin = 0;
+//     let computerWin = 0;
 
-    for (let i = 0; i < ROUNDS; i++) {
-        let computerSelection = getComputerChoice();
-        let humanSelection = humanPlayer();
+//     for (let i = 0; i < ROUNDS; i++) {
+//         let computerSelection = getComputerChoice();
+//         let humanSelection = humanPlayer();
 
-        if (!humanSelection) {
-            console.log("Game cancelled");
-            break;
-        }
+//         if (!humanSelection) {
+//             console.log("Game cancelled");
+//             break;
+//         }
 
-        if (!isValidChoice(humanSelection)) {
-            console.log("Invalid choice");
-            break;
-        }
+//         if (!isValidChoice(humanSelection)) {
+//             console.log("Invalid choice");
+//             break;
+//         }
 
-        console.log("Computer chose:", computerSelection);
-        console.log("Player chose:", humanSelection);
+//         console.log("Computer chose:", computerSelection);
+//         console.log("Player chose:", humanSelection);
 
-        let result = determineWinner(computerSelection, humanSelection);
-        console.log(result);
+//         let result = determineWinner(computerSelection, humanSelection);
+//         console.log(result);
 
-        if (result === "Player Wins") humanWin++;
-        else if (result === "Computer Wins") computerWin++;
-    }
+//         if (result === "Player Wins") humanWin++;
+//         else if (result === "Computer Wins") computerWin++;
+//     }
 
-    if (humanWin > computerWin) return "Player is the overall winner!";
-    else if (humanWin < computerWin) return "Computer is the overall winner!";
-    else return "It's a tie overall!";
-}
+//     if (humanWin > computerWin) return "Player is the overall winner!";
+//     else if (humanWin < computerWin) return "Computer is the overall winner!";
+//     else return "It's a tie overall!";
+// }
 
-// Example call
-console.log(playRound());
+// // Example call
+// console.log(playRound());

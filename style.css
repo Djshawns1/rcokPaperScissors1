@@ -5,8 +5,7 @@
     height: 150vh;
     align-items: center;
 }
-.rockImg, .paperImg, .scissorsImg{
+.btn img {
     width: 50vh;
-    width: auto;
     cursor: pointer;
 }
